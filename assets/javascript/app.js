@@ -30,12 +30,22 @@ $(document).ready(function () {
 
                 var rapperDiv = $("<div>");
 
-                var rapperImage = $("<img>");
+                
 
                 //not looping thru results for some reason tired results.images.length
                 for (var i = 0; i < results.length; i++) {
 
+                    var rapperImage = $("<img>");
+
                     rapperImage.attr("src", results[i].images.fixed_height_small_still.url);
+
+                    rapperImage.attr("data-still", results[i].images.fixed_height_small_still.url);
+
+                    rapperImage.attr("data-animate", results[i].images.fixed_height_small.url);
+
+                    rapperImage.attr("data-state", "still");
+
+                    rapperImage.addClass("images")
 
                     rapperDiv.append(rapperImage);
 
@@ -74,22 +84,20 @@ $(document).ready(function () {
 
     // setting up click function on image to prepare to change the state from still to animate
 
-    // $("<img>").on("click", function() {
-    //     var state = $(this).attr("data-state")
-    //     console.log(state);
+    $(document).on("click", ".images", function() {
+        var state = $(this).attr("data-state")
+        console.log(state);
 
-    //create if statement that will check if the state of the image is still and if it change the state to animate on button click
-    //if (state === "still") {
-    //     $(this).attr("src", $(this).attr("data-animate"));
-    //     $(this).attr("data-state", "animate");
-    //   } else {
-    //     $(this).attr("src", $(this).attr("data-still"));
-    //     $(this).attr("data-state", "still");
-    // }
+    // create if statement that will check if the state of the image is still and if it change the state to animate on button click
+    if (state === "still") {
+        $(this).attr("src", $(this).attr("data-animate"));
+        $(this).attr("data-state", "animate");
+      } else {
+        $(this).attr("src", $(this).attr("data-still"));
+        $(this).attr("data-state", "still");
+    };
 
-
-
-    // });
+    });
 
     loop();
     displayGif();
