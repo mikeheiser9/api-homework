@@ -1,6 +1,7 @@
 body {
     background-image: url("../images/kendrick.jpg");
     background-size: auto;
+    background-repeat: repeat;
 
 }
 
@@ -24,5 +25,31 @@ body {
     font-family: 'Heebo', sans-serif;
     margin-left:55px;
     width: auto;
+
+}
+
+#submit-btn {
+    background-color: #9B9B93;
+    padding: 10px;
+    color: #39393A;
+    margin-left: 45px;
+    width: 175px;
+    margin-top: 20px;
+    font-weight: bolder;
+    color: antiquewhite;
+}
+
+.form-group {
+    margin-left: 420px;
+    width: 260px;
+    margin-top: 20px;
+}
+
+label {
+    background-color: #9B9B93;
+    color: #39393A;
+    padding: 5px;
+    margin-left: 81px;
+    margin-top: 50px;
 
 }

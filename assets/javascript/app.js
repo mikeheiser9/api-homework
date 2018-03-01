@@ -12,13 +12,13 @@ $(document).ready(function () {
 
 
         //create click function that runs the function upon click
-        $(document).on("click", ".artistButton", function() {
+        $(document).on("click", ".artistButton", function () {
             var rapper = $(this).attr("data");
             console.log(rapper);
-
+            //query link to API
             var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
                 rapper + "&api_key=dc6zaTOxFJmzC&limit=10";
-
+            //Ajax call
             $.ajax({
                 url: queryURL,
                 method: "GET"
@@ -32,11 +32,10 @@ $(document).ready(function () {
 
                 var rapperImage = $("<img>");
 
+                //not looping thru results for some reason tired results.images.length
                 for (var i = 0; i < results.length; i++) {
 
-                    rapperImage.attr("src", results[i].images.fixed_height_small_still
-                        .url
-                    );
+                    rapperImage.attr("src", results[i].images.fixed_height_small_still.url);
 
                     rapperDiv.append(rapperImage);
 
@@ -61,10 +60,6 @@ $(document).ready(function () {
 
     });
 
-    //assign generated img a class? may not have to and just grab ima g
-    //
-
-
     function loop() {
 
         for (var i = 0; i < topics.length; i++) {
@@ -75,10 +70,26 @@ $(document).ready(function () {
         }
     };
 
-    $("<img>").on("click", function() {
-        var state = $(this).attr("data-state")
-        console.log(state);
-    });
+    //assign generated img a class? may not have to and just grab image
+
+    // setting up click function on image to prepare to change the state from still to animate
+
+    // $("<img>").on("click", function() {
+    //     var state = $(this).attr("data-state")
+    //     console.log(state);
+
+    //create if statement that will check if the state of the image is still and if it change the state to animate on button click
+    //if (state === "still") {
+    //     $(this).attr("src", $(this).attr("data-animate"));
+    //     $(this).attr("data-state", "animate");
+    //   } else {
+    //     $(this).attr("src", $(this).attr("data-still"));
+    //     $(this).attr("data-state", "still");
+    // }
+
+
+
+    // });
 
     loop();
     displayGif();
